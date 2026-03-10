@@ -4,9 +4,9 @@
 // #include "StrEnc.h" 
 #include "include/includes.h"
 #include "curl/curl.h"
-#include "include/tools.h"
+#include "include/Tools.h"
 #include "json.hpp"
-#include "include/log.h"
+#include "include/Log.h"
 #include <jni.h>
 #include <string>
 #include <vector>
