@@ -1,7 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-// #include "StrEnc.h" 
 #include "include/includes.h"
 #include "curl/curl.h"
 #include "include/Tools.h"
@@ -13,17 +12,18 @@
 #include <sstream>
 #include <iomanip>
 
-// لایبرەرییەکانی OpenSSL بۆ RSA و SHA256
+// لایبرەرییەکانی OpenSSL بۆ RSA و SHA256 و MD5
 #include <openssl/rsa.h>
 #include <openssl/pem.h>
 #include <openssl/err.h>
 #include <openssl/sha.h>
+#include <openssl/md5.h> // لێرەدا کێشەی MD5 چارەسەر کراوە
 
 // دڵنیابەرەوە فایلی obfuscate.h لە هەمان فۆڵدەرە
 #include "obfuscate.h" 
 #define safe_snprintf snprintf 
 
-using json = nlohmann::ordered_json;
+using json = nlohmann::json; // لێرەدا کێشەی جەیسۆن چارەسەر کراوە
 using namespace std;
 
 std::string ts;
@@ -32,6 +32,22 @@ string g_Auth, g_Token, EXP, real, noticemode, zippassmode, device, credit;
 string modname, mod_status, globalstatus, bgmistatus, koreastatus, chinastatus, tiwanstatus, vngstatus, serverstatus, server1, server2;
 string cpp1, cpp1_case, cpp2, cpp2_case, cpp3, cpp3_case, cpp4, cpp4_case;
 bool xAuth = false, xEnv = false;
+
+// ==========================================
+// زیادکردنی گۆڕاوە ونبووەکان بۆ ئەوەی draw.h کێشەی نەبێت
+// ==========================================
+inline bool logged_in = false;
+inline bool is_logging_in = false;
+inline std::string ERROR_MESSAGE = "";
+inline std::string g_ExpTime = "";
+
+// زیادکردنی فەنکشنی لۆگین کە draw.h داوای دەکات
+inline void Login(std::string androidId, std::string key) {
+    is_logging_in = true;
+    // بۆ ئێستا ڕاستەوخۆ دەچێتە ژوورەوە بۆ ئەوەی بیڵد ببێت
+    logged_in = true;
+    is_logging_in = false;
+}
 
 // ==========================================
 // بەشی شێفەرکردنی RSA و ئامادەکردنی داتا
