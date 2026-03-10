@@ -1,12 +1,12 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-// #include "StrEnc.h" // ئەم دێڕە سڕدرایەوە
-#include "Includes.h"
+// #include "StrEnc.h" 
+#include "include/includes.h"
 #include "curl/curl.h"
-#include "Tools.h"
+#include "include/tools.h"
 #include "json.hpp"
-#include "Log.h"
+#include "include/log.h"
 #include <jni.h>
 #include <string>
 #include <vector>
